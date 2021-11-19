@@ -13,13 +13,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
         
-        <h1 style={x}>hello {person.name}</h1>
-        <h1 style={{backgroundColor: "royalblue", color: 'red'}}>hello world</h1>
-        
+       
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -28,9 +23,26 @@ function App() {
         >
           Learn React
         </a>
+        <h1>hello world</h1>
+        
+        <Myapp></Myapp>
+        <Myapp></Myapp>
+        <Myapp></Myapp>
       </header>
     </div>
   );
+}
+
+function Myapp(){
+  let myStyle ={
+    color: "royalblue",
+    border: "5px solid red"
+  }
+  return (
+    <div>
+      <h2 style ={{border:"2px solid orange", color: "gray"}}>jack bro</h2>
+    </div>
+  )
 }
 
 export default App;
