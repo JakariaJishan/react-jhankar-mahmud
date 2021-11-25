@@ -1,0 +1,15 @@
+.userInfo {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  margin: 24px;
+  padding: 1rem;
+  width: 40%;
+}
+.userDetails {
+  margin-left: 24px;
+  font-size: 18px;
+}
+.userImage {
+  margin-top: 1rem;
+}
