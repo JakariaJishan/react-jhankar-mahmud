@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import "firebase/auth";
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { useState } from "react";
 import "./App.css";
 import firebaseConfig from "./firebase.config";
@@ -19,6 +19,34 @@ function App() {
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
+  const fbProvider = new FacebookAuthProvider();
+
+  let handleFbSignIn = () => {
+    const auth = getAuth(app);
+    signInWithPopup(auth, fbProvider)
+  .then((result) => {
+    // The signed-in user info.
+    const user = result.user;
+
+    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    // const credential = FacebookAuthProvider.credentialFromResult(result);
+    // const accessToken = credential.accessToken;
+    console.log(user);
+    // ...
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.email;
+    // The AuthCredential type that was used.
+    const credential = FacebookAuthProvider.credentialFromError(error);
+    console.log(errorCode, errorMessage, email, credential);
+    // ...
+  });
+  }
+
   let handleSignIn = () => {
     signInWithPopup(auth, provider)
       .then((res) => {
@@ -129,14 +157,21 @@ let handleSubmit = (e) =>{
         <button onClick={handleSignIn}>Sign In</button>
 
       }
+        <button onClick={handleFbSignIn}>Sign In using facebook</button>
 
-      {user.isSignIn && (
-        <div>
-          <p>welcome {user.name}</p>
-          <p>email {user.email}</p>
-          <img src={user.photo} alt=""></img>
-        </div>
-      )}
+      {
+
+      }
+
+      {
+        user.isSignIn && (
+          <div>
+            <p>welcome {user.name}</p>
+            <p>email {user.email}</p>
+            <img src={user.photo} alt=""></img>
+          </div>
+        )
+      }
 
       {/* email authentication */}
 
