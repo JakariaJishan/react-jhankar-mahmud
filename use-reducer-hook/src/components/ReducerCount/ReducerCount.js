@@ -15,7 +15,7 @@ function reducer(state, action) {
 
 const ReducerCount = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state);
+  // console.log(state);
   return (
     <div>
       <h1>hello reducer {state.count}</h1>
