@@ -18,14 +18,9 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/signin" element={<SignIn />} />
-          <Route
-            path="/about"
-            element={
-              <PrivateRoute>
-                <About />
-              </PrivateRoute>
-            }
-          />
+          <Route path="/" element={<PrivateRoute />}>
+            <Route exact path="/about" element={<About />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </categoryContext.Provider>
