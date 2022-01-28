@@ -27,7 +27,7 @@ const Main = () => {
           "access token",
           res.user.stsTokenManager.refreshToken
         );
-          navigate('/subscribe');
+          navigate('/');
         // ...
       })
       .catch((error) => {
@@ -45,7 +45,7 @@ const Main = () => {
           "access token",
           res.user.stsTokenManager.refreshToken
         );
-
+          navigate('/')
         // ...
       })
       .catch((error) => {
@@ -55,14 +55,18 @@ const Main = () => {
         // ..
       });
   };
-
+  const handleLogOut = () => {
+    sessionStorage.removeItem('access token');
+    navigate('/login');
+  }
   const PrivateRoute = () => {
     let accessToken = sessionStorage.getItem("access token");
     return accessToken ? <Outlet /> : <Navigate to="/login" />;
   };
   return (
     <div>
-      <NabBar />
+      <p>{user}</p>
+      <NabBar handleLogOut={handleLogOut} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/*" element={<PrivateRoute />}>
