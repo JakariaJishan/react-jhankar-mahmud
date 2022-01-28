@@ -27,7 +27,7 @@ const Main = () => {
           "access token",
           res.user.stsTokenManager.refreshToken
         );
-
+          navigate('/subscribe');
         // ...
       })
       .catch((error) => {
