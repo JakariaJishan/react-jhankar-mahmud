@@ -6,7 +6,9 @@ const NabBar = () => {
             <div>
                   <Link to={'/'}>Home</Link>
                   <Link to={'/subscribe'}>Subscribe</Link>
+                  <Link to={'/about'}>About</Link>
                   <Link to={'/login'}>Login</Link>
+                 
                   
             </div>
       );

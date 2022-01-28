@@ -2,7 +2,7 @@ import { Box, Button, TextField } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Signup = () => {
+const Signup = ({setEmail, setPassword, handleSignUp, setUser}) => {
   return (
     <div>
       this is signup page
@@ -14,13 +14,13 @@ const Signup = () => {
         noValidate
         autoComplete="off"
       >
-        <TextField id="outlined-basic" label="user name" variant="outlined" />
+        <TextField id="outlined-basic" label="user name" variant="outlined" onChange={(e) => setUser(e.target.value)}/>
         <br />
-        <TextField id="outlined-basic" label="email" variant="outlined" />
+        <TextField id="outlined-basic" label="email" variant="outlined" onChange={(e) => setEmail(e.target.value)}/>
         <br />
-        <TextField id="outlined-basic" label="password" variant="outlined" />
+        <TextField id="outlined-basic" label="password" variant="outlined" onChange={(e) => setPassword(e.target.value)} />
       </Box>
-      <Button variant="contained">Create account</Button>
+      <Button variant="contained" onClick={handleSignUp}>Create account</Button>
       <p>
         or{" "}
         <span>
