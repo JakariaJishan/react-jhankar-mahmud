@@ -61,7 +61,7 @@ const Main = () => {
   }
   const PrivateRoute = () => {
     let accessToken = sessionStorage.getItem("access token");
-    return accessToken ? <Outlet /> : <Navigate to="/login" />;
+    return accessToken ? <Outlet /> : <Navigate to={'/login'}/>;
   };
   return (
     <div>
